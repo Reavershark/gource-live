@@ -73,9 +73,9 @@ test -d "$1" && project_dir="$1" || project_dir=.
 
 
 if test -d "$project_dir"/.git; then
-    echo $startrev
     if [ $startrev -eq 0 ]; then
-        startrev=$(git rev-list --max-parents=0 $remote $branch)
+        echo "Starting at first commit"
+        startrev=$(git rev-list --max-parents=0 $branch)
     fi
     feeder="$feeders"/git.sh
     feeder_args="$interval $startrev $relstart $remote $branch"
