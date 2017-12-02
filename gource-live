@@ -24,6 +24,7 @@ usage() {
     echo
     echo Options:
     echo "  -i, --interval INTERVAL  Interval to poll repository for changes, default = $interval"
+    echo "  -a  --avatars DIR        Directory containing avatar images"
     echo "  -s, --startrev REV       Start revision, default = $startrev"
     echo "      --relstart N         Start from HEAD - N, ignored when startrev != 0, default = $relstart"
     echo
@@ -44,10 +45,12 @@ relstart=1000000000
 startrev=0
 remote=origin
 branch=HEAD
+avatars=
 while [ $# != 0 ]; do
     case $1 in
     -h|--help) usage ;;
     -i|--interval) shift; interval=$1 ;;
+    -a|--avatars) shift; avatars="--user-image-dir $1" ;;
     -s|--startrev) shift; startrev=$1 ;;
     --relstart) shift; relstart=$1 ;;
     -r|--remote) shift; remote=$1 ;;
@@ -92,5 +95,5 @@ fi
 if test $feed_only = on; then
     "$feeder" "$project_dir" $feeder_args
 else
-    "$feeder" "$project_dir" $feeder_args | tee /dev/stderr | gource --title "$(pwd):$branch" --log-format custom --file-idle-time 0 -
+    "$feeder" "$project_dir" $feeder_args | tee /dev/stderr | gource --title "$(pwd):$branch" $avatars --log-format custom --file-idle-time 0 -
 fi
