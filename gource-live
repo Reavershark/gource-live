@@ -39,7 +39,7 @@ usage() {
 
 args=
 feed_only=off
-interval=5
+interval=2
 relstart=1000000000
 startrev=0
 remote=origin
