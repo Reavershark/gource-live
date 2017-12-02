@@ -43,7 +43,7 @@ interval=5
 relstart=10
 startrev=0
 remote=origin
-branch=master
+branch=HEAD
 while [ $# != 0 ]; do
     case $1 in
     -h|--help) usage ;;
