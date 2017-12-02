@@ -40,7 +40,7 @@ usage() {
 args=
 feed_only=off
 interval=5
-relstart=10
+relstart=1000000000
 startrev=0
 remote=origin
 branch=HEAD
@@ -73,10 +73,6 @@ test -d "$1" && project_dir="$1" || project_dir=.
 
 
 if test -d "$project_dir"/.git; then
-    if [ $startrev -eq 0 ]; then
-        echo "Starting at first commit"
-        startrev=$(git rev-list --max-parents=0 $branch | awk 'NR==1')
-    fi
     feeder="$feeders"/git.sh
     feeder_args="$interval $startrev $relstart $remote $branch"
 elif test -d "$project_dir"/.bzr; then

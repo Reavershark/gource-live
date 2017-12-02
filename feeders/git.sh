@@ -19,7 +19,7 @@ test "$STARTREV" -a "$STARTREV" != 0 && SHA=$STARTREV || SHA=$(git --git-dir "$P
 
 while true
 do
-    for SHA in $(git --git-dir "$PROJECTDIR" rev-list --reverse --first-parent $SHA..$REMOTE/$BRANCH)
+    for SHA in $(git --git-dir "$PROJECTDIR" rev-list --reverse $SHA..$REMOTE/$BRANCH)
     do
         AUTHOR=$(git --git-dir "$PROJECTDIR" log --format=%an $SHA --max-count=1)
         TIMESTAMP=$(git --git-dir "$PROJECTDIR" log --format=%at $SHA --max-count=1)
