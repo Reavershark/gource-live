@@ -30,6 +30,6 @@ do
         done
     done
     test $INTERVAL = 0 && break
-    git --git-dir "$PROJECTDIR" fetch $REMOTE $BRANCH >/dev/null 2>&1
+    git --git-dir "$PROJECTDIR" fetch >/dev/null 2>&1
     sleep $INTERVAL
 done
