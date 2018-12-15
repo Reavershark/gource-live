@@ -95,5 +95,5 @@ fi
 if test $feed_only = on; then
     "$feeder" "$project_dir" $feeder_args
 else
-    "$feeder" "$project_dir" $feeder_args | tee /dev/stderr | gource --title "$(pwd):$branch" $avatars --log-format custom --file-idle-time 0 --hide bloom,mouse --seconds-per-day 0.01 --max-file-lag 1 --key -
+    "$feeder" "$project_dir" $feeder_args | tee /dev/stderr | gource --title "$(pwd):$branch" $avatars --log-format custom --file-idle-time 0 --hide bloom,mouse --seconds-per-day 0.0001 --max-file-lag 1 --key -
 fi
